@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { CustomerDataProps } from '../@types/customer.type'
 import { GetCustomerData } from '../services/customerService'
 
@@ -13,8 +13,7 @@ const useFetch = (): FetchResult => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = useCallback(async () => {
       try {
         const customerData = await GetCustomerData()
         setData(customerData)
@@ -24,10 +23,11 @@ const useFetch = (): FetchResult => {
       } finally {
         setLoading(false)
       }
-    }
-
-    fetchData()
   }, [])
+
+  useEffect(() => {
+    fetchData()
+  }, [fetchData])
 
   return { data, loading, error }
 }
