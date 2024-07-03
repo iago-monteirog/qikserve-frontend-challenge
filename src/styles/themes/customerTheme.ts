@@ -1,25 +1,26 @@
 export interface WebSettingsProps {
-  id: number;
-  venueId: number;
-  bannerImage: string;
-  backgroundColour: string;
-  primaryColour: string;
-  primaryColourHover: string;
-  navBackgroundColour: string;
+  id: number
+  venueId: number
+  bannerImage: string
+  backgroundColour: string
+  primaryColour: string
+  primaryColourHover: string
+  navBackgroundColour: string
 }
 
 export interface CustomerThemeType {
-  id: number,
+  id: number
   venueId: number
-  bannerImage: string;
-  backgroundColour: string;
-  primaryColour: string;
-  primaryColourHover: string;
-  navBackgroundColour: string;
+  bannerImage: string
+  backgroundColour: string
+  primaryColour: string
+  primaryColourHover: string
+  navBackgroundColour: string
 }
 
-
-export const createCustomerTheme = (webSettings: WebSettingsProps): CustomerThemeType => ({
+export const createCustomerTheme = (
+  webSettings: WebSettingsProps,
+): CustomerThemeType => ({
   id: webSettings.id,
   venueId: webSettings.venueId,
   bannerImage: webSettings.bannerImage,
@@ -27,7 +28,7 @@ export const createCustomerTheme = (webSettings: WebSettingsProps): CustomerThem
   primaryColour: webSettings.primaryColour,
   primaryColourHover: webSettings.primaryColourHover,
   navBackgroundColour: webSettings.navBackgroundColour,
-});
+})
 
 export const defaultCustomerTheme: CustomerThemeType = {
   id: 0,
@@ -37,4 +38,4 @@ export const defaultCustomerTheme: CustomerThemeType = {
   primaryColour: '#000',
   primaryColourHover: '#555',
   navBackgroundColour: '#000',
-};
+}

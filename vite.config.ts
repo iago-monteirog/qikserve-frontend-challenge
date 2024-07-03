@@ -11,7 +11,7 @@ export default defineConfig({
         target: 'https://cdn-dev.preoday.com/challenge',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
-      }
-    }
-  }
+      },
+    },
+  },
 })
