@@ -1,25 +1,7 @@
-export interface WebSettingsProps {
-  id: number
-  venueId: number
-  bannerImage: string
-  backgroundColour: string
-  primaryColour: string
-  primaryColourHover: string
-  navBackgroundColour: string
-}
-
-export interface CustomerThemeType {
-  id: number
-  venueId: number
-  bannerImage: string
-  backgroundColour: string
-  primaryColour: string
-  primaryColourHover: string
-  navBackgroundColour: string
-}
+import { CustomerThemeType } from "../../@types/customer.type"
 
 export const createCustomerTheme = (
-  webSettings: WebSettingsProps,
+  webSettings: CustomerThemeType,
 ): CustomerThemeType => ({
   id: webSettings.id,
   venueId: webSettings.venueId,

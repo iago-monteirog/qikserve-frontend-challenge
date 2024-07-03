@@ -1,11 +1,11 @@
 import { createContext, useState, ReactNode, useEffect, memo } from 'react'
 import {
-  CustomerThemeType,
   createCustomerTheme,
   defaultCustomerTheme,
 } from '../styles/themes/customerTheme'
 import useFetch from '../hooks/useFetch'
 import { ThemeProvider } from 'styled-components'
+import { CustomerThemeType } from '../@types/customer.type'
 
 interface ThemeContextProps {
   theme: CustomerThemeType
@@ -16,8 +16,6 @@ interface ThemeContextProviderProps {
   children: ReactNode
 }
 
-const URL_PATH = '/venue/9'
-
 export const ThemeContext = createContext<ThemeContextProps>({
   theme: defaultCustomerTheme,
   setTheme: () => {},
@@ -27,7 +25,7 @@ const ThemeContextProviderComponent = ({
   children,
 }: ThemeContextProviderProps) => {
   const [theme, setTheme] = useState<CustomerThemeType>(defaultCustomerTheme)
-  const { data, error, loading } = useFetch(URL_PATH)
+  const { data, error, loading } = useFetch()
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
