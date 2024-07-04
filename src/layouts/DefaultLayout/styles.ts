@@ -11,5 +11,15 @@ export const LayoutContainer = styled.main`
 export const BannerImage = styled.img`
   width: 100%; 
   height: auto; 
-  max-width: 100%; 
+  max-width: 100%;
+  object-fit: cover; 
+  
+  @media (min-width: 768px) {
+    max-height: 150px; 
+  }
+
+  @media (max-width: 767px) {
+    max-height: none;
+    height: 20vh;
+  } 
 `;
