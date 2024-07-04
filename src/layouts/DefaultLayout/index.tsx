@@ -1,10 +1,16 @@
 import { Outlet } from 'react-router'
-import { LayoutContainer } from './styles'
+import { BannerImage, LayoutContainer } from './styles'
+import { HeaderComponent } from '../../components/Header'
+import useFetch from '../../hooks/useFetch'
 
 export const DefaultLayout = () => {
+  const { data } = useFetch();
+
+  const bannerImg = data?.webSettings.bannerImage;
   return (
     <LayoutContainer>
-      <h1>Olá mundo</h1>
+      <HeaderComponent />
+      {bannerImg && <BannerImage src={bannerImg} alt="Banner" />}
       <Outlet />
     </LayoutContainer>
   )
