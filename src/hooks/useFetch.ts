@@ -14,15 +14,15 @@ const useFetch = (): FetchResult => {
   const [error, setError] = useState<Error | null>(null)
 
   const fetchData = useCallback(async () => {
-      try {
-        const customerData = await GetCustomerData()
-        setData(customerData)
-      } catch (error) {
-        setLoading(false)
-        setError(error as Error)
-      } finally {
-        setLoading(false)
-      }
+    try {
+      const customerData = await GetCustomerData()
+      setData(customerData)
+    } catch (error) {
+      setLoading(false)
+      setError(error as Error)
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
   useEffect(() => {

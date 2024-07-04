@@ -1,4 +1,4 @@
-import { CustomerThemeType } from "../../@types/customer.type"
+import { CustomerThemeType } from '../../@types/customer.type'
 
 export const createCustomerTheme = (
   webSettings: CustomerThemeType,

@@ -7,10 +7,10 @@ export const CustomerThemeTypeSchema = z.object({
   backgroundColour: z.string(),
   primaryColour: z.string(),
   primaryColourHover: z.string(),
-  navBackgroundColour: z.string()
+  navBackgroundColour: z.string(),
 })
 
-export const CustomerDataPropsSchema = z.object ({
+export const CustomerDataPropsSchema = z.object({
   id: z.number(),
   name: z.string(),
   internalName: z.string(),
@@ -35,4 +35,3 @@ export const CustomerDataPropsSchema = z.object ({
 
 export type CustomerThemeType = z.infer<typeof CustomerThemeTypeSchema>
 export type CustomerDataProps = z.infer<typeof CustomerDataPropsSchema>
-

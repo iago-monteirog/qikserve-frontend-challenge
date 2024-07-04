@@ -1,12 +1,16 @@
 import { GlobalStyle } from './styles/global'
 import { ThemeContextProvider } from './contexts/ThemeContext'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
 
 function App() {
   return (
-    <ThemeContextProvider>
-      <GlobalStyle />
-      <h1>Olá mundo</h1>
-    </ThemeContextProvider>
+    <BrowserRouter>
+      <ThemeContextProvider>
+        <GlobalStyle />
+        <Router />
+      </ThemeContextProvider>
+    </BrowserRouter>
   )
 }
 
