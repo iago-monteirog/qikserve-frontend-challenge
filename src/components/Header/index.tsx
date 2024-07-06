@@ -1,18 +1,19 @@
 // HeaderComponent.jsx
-import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { HeaderContainer, MenuIcon, NavLinks, PageTitle } from "./styles";
+import { useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
+import { HeaderContainer, MenuIcon, NavLinks, PageTitle } from './styles'
 import { List } from '@phosphor-icons/react'
 
 export const HeaderComponent = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
 
-  const currentPage = location.pathname === "/" ? "Menu" : location.pathname.substring(1);
+  const currentPage =
+    location.pathname === '/' ? 'Menu' : location.pathname.substring(1)
 
   const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
-  };
+    setMenuOpen(!menuOpen)
+  }
 
   return (
     <HeaderContainer>
@@ -32,5 +33,5 @@ export const HeaderComponent = () => {
         </NavLink>
       </NavLinks>
     </HeaderContainer>
-  );
-};
+  )
+}

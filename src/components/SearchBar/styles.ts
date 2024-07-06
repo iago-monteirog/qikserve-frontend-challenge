@@ -1,10 +1,10 @@
-import { MagnifyingGlass } from "@phosphor-icons/react";
-import styled from "styled-components"
+import { MagnifyingGlass } from '@phosphor-icons/react'
+import styled from 'styled-components'
 
 export const SearchBarContent = styled.div`
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
 `
 
 export const SearchInput = styled.input`
@@ -18,12 +18,12 @@ export const SearchInput = styled.input`
     outline: none;
     border-color: #aaa;
   }
-`;
+`
 
 export const SearchIncon = styled(MagnifyingGlass)`
   position: absolute;
   top: 50%;
   left: 10px;
   transform: translateY(-50%);
-  color: #8A94A4;
+  color: #8a94a4;
 `

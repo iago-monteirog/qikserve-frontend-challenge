@@ -4,9 +4,9 @@ import { HeaderComponent } from '../../components/Header'
 import useFetch from '../../hooks/useFetch'
 
 export const DefaultLayout = () => {
-  const { data } = useFetch();
+  const { data } = useFetch()
 
-  const bannerImg = data?.webSettings.bannerImage;
+  const bannerImg = data?.webSettings.bannerImage
   return (
     <LayoutContainer>
       <HeaderComponent />

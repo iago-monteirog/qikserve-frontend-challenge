@@ -1,5 +1,5 @@
 // styles.ts
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
   @media (max-width: 768px) {
     height: 64px;
   }
-`;
+`
 
 export const MenuIcon = styled.div`
   display: none;
@@ -22,7 +22,7 @@ export const MenuIcon = styled.div`
   @media (max-width: 768px) {
     display: flex;
   }
-`;
+`
 
 export const PageTitle = styled.div`
   display: none;
@@ -34,7 +34,7 @@ export const PageTitle = styled.div`
     font-size: 1.5rem;
     color: ${(props) => props.theme.backgroundColour};
   }
-`;
+`
 
 export const NavLinks = styled.nav<{ menuOpen: boolean }>`
   display: flex;
@@ -68,7 +68,7 @@ export const NavLinks = styled.nav<{ menuOpen: boolean }>`
     right: 0;
     background-color: ${(props) => props.theme.navBackgroundColour};
     width: 100%;
-    max-height: ${(props) => (props.menuOpen ? "200px" : "0")};
+    max-height: ${(props) => (props.menuOpen ? '200px' : '0')};
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
 
@@ -77,4 +77,4 @@ export const NavLinks = styled.nav<{ menuOpen: boolean }>`
       padding: 10px 0;
     }
   }
-`;
+`

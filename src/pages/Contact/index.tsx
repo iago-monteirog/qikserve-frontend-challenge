@@ -1,7 +1,7 @@
 export const Contact = () => {
-    return (
-        <div>
-            <h1>Contato</h1>
-        </div>
-    )
+  return (
+    <div>
+      <h1>Contato</h1>
+    </div>
+  )
 }
