@@ -1,4 +1,4 @@
-import { CaretUp } from "@phosphor-icons/react";
+import { CaretDown, CaretUp } from "@phosphor-icons/react";
 import styled from "styled-components";
 
 export const MenuSectionContainer = styled.div`
@@ -15,6 +15,11 @@ export const MenuSectionToggleeBox = styled.div`
 `
 
 export const CaretUpIcon = styled(CaretUp)`
+    color: ${props => props.theme.primaryColour};
+    cursor: pointer;
+`
+
+export const CaretDownIcon = styled(CaretDown)`
     color: ${props => props.theme.primaryColour};
     cursor: pointer;
 `

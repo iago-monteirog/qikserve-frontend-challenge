@@ -19,6 +19,11 @@ export const Content = styled.div`
     border-radius: 4px;
 `
 
+export const MenuItemsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 export const MenuBox = styled.div`
     background: ${props => props.theme.backgroundColour};
     padding: 20px 16px;
@@ -26,6 +31,7 @@ export const MenuBox = styled.div`
     flex-direction: column;
     gap: 2rem;
     border-radius: 2px;
+    min-width: 600px;
 
 `
 

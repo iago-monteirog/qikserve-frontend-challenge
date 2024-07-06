@@ -1,11 +1,21 @@
-import { CaretUpIcon, ItemDescription, MenuItem, MenuSectionContainer, MenuSectionToggleeBox } from "./styles"
+import { useState } from "react"
+import { CaretDownIcon, CaretUpIcon, ItemDescription, MenuItem, MenuSectionContainer, MenuSectionToggleeBox } from "./styles"
+import './menuAnimation.css'
 
 export const MenuSection = () => {
+    const [isOpen, setIsOpen] = useState(true)
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    }
+
     return (
         <MenuSectionContainer>
             <MenuSectionToggleeBox>
                 <h1>Burguers</h1>
-                <CaretUpIcon size={24} />
+                <div onClick={toggleMenu}>
+                    {isOpen ? <CaretUpIcon size={24} /> : <CaretDownIcon size={24} />}
+                </div>
             </MenuSectionToggleeBox>
 
             <MenuItem>
@@ -35,6 +45,7 @@ export const MenuSection = () => {
 
                 <img src="https://preodemo.gumlet.io/usr/venue/7602/menuItem/646fbdc8cecca.png" alt="" />
             </MenuItem>
+
         </MenuSectionContainer>
     )
 }
