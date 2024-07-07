@@ -4,12 +4,12 @@ export const ModifierItemSchema = z.object({
   id: z.number(),
   name: z.string(),
   price: z.number(),
-  maxChoice: z.number(),
+  maxChoices: z.number(),
   position: z.number(),
   visible: z.number(),
   availabilityType: z.string(),
   qty: z.number().optional(),
-  available: z.number(),
+  available: z.boolean(),
 })
 
 export const ModifierItemsSchema = z.array(ModifierItemSchema)

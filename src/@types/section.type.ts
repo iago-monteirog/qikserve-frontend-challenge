@@ -5,10 +5,10 @@ import { ItemsSchema } from './item.type'
 export const SectionSchema = z.object({
   id: z.number(),
   name: z.string(),
-  description: z.string().nullable(),
+  description: z.string().nullable().optional(),
   position: z.number(),
-  visible: z.number(),
-  images: ImagesSchema,
+  visible: z.number().optional(),
+  images: ImagesSchema.optional(),
   items: ItemsSchema,
 })
 

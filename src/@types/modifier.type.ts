@@ -1,12 +1,12 @@
 import { z } from 'zod'
-import { ModifierItemSchema } from './modifierItem.type'
+import { ModifierItemsSchema } from './modifierItem.type'
 
 export const ModifierSchema = z.object({
   id: z.number(),
   name: z.string(),
   minChoices: z.number(),
   maxChoices: z.number(),
-  items: ModifierItemSchema,
+  items: ModifierItemsSchema.optional(),
 })
 
 export const ModifiersSchema = z.array(ModifierSchema)
