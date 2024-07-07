@@ -10,7 +10,7 @@ export const Carrousel = () => {
   return (
     <CarrouselBox>
       {carrouselMenuSections?.map(section => {
-        const imageSrc = section.images && section.images.length > 0 ? section.images[0]?.image ?? "" : "";
+        const imageSrc = section.images && section.images.length > 0 ? section.images[0]?.image ?? "" : ""
         return (
           <CarrouselCard key={section.id}>
             <CardBadge>

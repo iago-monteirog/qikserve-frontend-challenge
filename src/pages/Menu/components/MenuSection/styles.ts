@@ -9,6 +9,12 @@ export const MenuSectionContainer = styled.div`
 
 export const MenuSectionToggleeBox = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+`
+
+export const MenuTitleBox = styled.div`
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 32px 16px 12px;
@@ -24,12 +30,27 @@ export const CaretDownIcon = styled(CaretDown)`
   cursor: pointer;
 `
 
+export const ItemsContainer = styled.div`
+    overflow: hidden; 
+    transition: max-height 0.3s ease; 
+    max-height: 0; 
+
+    &.open {
+        max-height: 1000px; 
+    }
+
+    .closed {
+        max-height: 0; 
+    }
+`
+
 export const MenuItem = styled.div`
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 5rem;
+  cursor: pointer;
 
   img {
     max-width: 128px;

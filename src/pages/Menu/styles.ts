@@ -38,4 +38,5 @@ export const ShopCartBox = styled.div`
   background: ${(props) => props.theme.backgroundColour};
   padding: 20px 16px;
   border-radius: 2px;
+  max-height: 260px;
 `
