@@ -1,38 +1,29 @@
+import { useContext } from 'react'
 import { CarrouselBox, CarrouselCard, CardBadge } from './styles'
+import { MenuContext } from '../../../../contexts/MenuContext'
 
 export const Carrousel = () => {
+  const { menuData } = useContext(MenuContext);
+
+  const carrouselMenuSections = menuData?.sections
+
   return (
     <CarrouselBox>
-      <CarrouselCard>
-        <CardBadge>
-          <img
-            src="https://preodemo.gumlet.io/usr/venue/7602/section/646fbe4c64a6f.png"
-            alt=""
-          />
-        </CardBadge>
+      {carrouselMenuSections?.map(section => {
+        const imageSrc = section.images && section.images.length > 0 ? section.images[0]?.image ?? "" : "";
+        return (
+          <CarrouselCard key={section.id}>
+            <CardBadge>
+              <img
+                src={imageSrc}
+                alt={section.name}
+              />
+            </CardBadge>
 
-        <p>Burguers</p>
-      </CarrouselCard>
-      <CarrouselCard>
-        <CardBadge>
-          <img
-            src="https://preodemo.gumlet.io/usr/venue/7602/section/646fbe4c64a6f.png"
-            alt=""
-          />
-        </CardBadge>
-
-        <p>Burguers</p>
-      </CarrouselCard>
-      <CarrouselCard>
-        <CardBadge>
-          <img
-            src="https://preodemo.gumlet.io/usr/venue/7602/section/646fbe4c64a6f.png"
-            alt=""
-          />
-        </CardBadge>
-
-        <p>Burguers</p>
-      </CarrouselCard>
+            <p>{section.name}</p>
+          </CarrouselCard>
+        )
+      })}
     </CarrouselBox>
   )
 }
