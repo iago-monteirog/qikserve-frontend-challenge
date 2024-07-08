@@ -5,7 +5,7 @@ import { MenuSection } from './components/MenuSection'
 import { useRef } from 'react'
 
 export const Menu = () => {
-  const sectionRefs = useRef<any>({})
+  const sectionRefs = useRef<Record<number, HTMLDivElement | null>>({})
 
   const scrollToSection = (sectionId: number) => {
     const sectionElement = sectionRefs.current[sectionId];

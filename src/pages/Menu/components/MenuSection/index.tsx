@@ -15,7 +15,7 @@ import useFetch from '../../../../hooks/useFetch'
 import { priceFormatter } from '../../../../utils/formatter'
 
 interface MenuSectionProps {
-  setSectionRefs: (refs: any) => void;
+  setSectionRefs: (refs: React.MutableRefObject<Record<number, HTMLDivElement | null>>) => void;
 }
 
 type SectionState = Record<number, boolean>;
@@ -24,14 +24,14 @@ const MenuSectionComponent = ({ setSectionRefs }: MenuSectionProps) => {
   const { menuData } = useContext(MenuContext)
   const { data } = useFetch()
   const [openSections, setOpenSections] = useState<SectionState>({})
-  const sectionRefs = useRef<any>({})
+  const sectionRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   setSectionRefs(sectionRefs);
   useEffect(() => {
     setSectionRefs(sectionRefs);
   }, [sectionRefs, setSectionRefs]);
 
-  const currentCurrency = data?.ccy || 'BRL'
+  const currentCurrency = data?.ccy || 'USD'
 
   const menuSections = menuData?.sections
 
