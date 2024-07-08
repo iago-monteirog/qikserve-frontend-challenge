@@ -1,8 +1,9 @@
 import { SearchBarComponent } from '../../components/SearchBar'
-import { Content, MenuBox, MenuContainer, ShopCartBox } from './styles'
+import { Content, MenuBox, MenuContainer } from './styles'
 import { Carrousel } from './components/Carrousel'
 import { MenuSection } from './components/MenuSection'
 import { useRef } from 'react'
+import { ShopCart } from './components/ShopCart'
 
 export const Menu = () => {
   const sectionRefs = useRef<Record<number, HTMLDivElement | null>>({})
@@ -21,17 +22,10 @@ export const Menu = () => {
       <Content>
         <MenuBox>
           <Carrousel scrollToSection={scrollToSection} />
-          <MenuSection  setSectionRefs={refs => (sectionRefs.current = refs.current)}/>
+          <MenuSection setSectionRefs={refs => (sectionRefs.current = refs.current)} />
         </MenuBox>
 
-        <ShopCartBox>
-          <div>
-            <h1>Carrinho</h1>
-          </div>
-          <div>
-            <p>Seu carrinho está vazio</p>
-          </div>
-        </ShopCartBox>
+        <ShopCart />
       </Content>
     </MenuContainer>
   )

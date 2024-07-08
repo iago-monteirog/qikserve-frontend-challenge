@@ -9,7 +9,6 @@ import {
   MenuSectionToggleeBox,
   MenuTitleBox,
 } from './styles'
-import './menuAnimation.css'
 import { MenuContext } from '../../../../contexts/MenuContext'
 import useFetch from '../../../../hooks/useFetch'
 import { priceFormatter } from '../../../../utils/formatter'
