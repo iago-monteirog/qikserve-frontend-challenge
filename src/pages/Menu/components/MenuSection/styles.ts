@@ -58,6 +58,10 @@ export const MenuItem = styled.div`
     object-fit: cover;
     border-radius: 4px;
   }
+
+  &:hover {
+    background: #EEEEEE;
+  }
 `
 
 export const ItemDescription = styled.div`

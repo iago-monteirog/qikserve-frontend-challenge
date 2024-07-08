@@ -5,15 +5,20 @@ export const CarrouselBox = styled.div`
   gap: 12px;
 `
 
-export const CarrouselCard = styled.div`
+interface CarrouselCardProps {
+  isSelected: boolean
+}
+
+export const CarrouselCard = styled.a<CarrouselCardProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   max-width: 6.5rem;
-  border-bottom: 2px solid ${(props) => props.theme.primaryColour};
+  border-bottom: 2px solid ${({ isSelected, theme }) => isSelected ? theme.primaryColour : 'transparent'};
   padding: 0 10px 10px;
+  cursor: pointer;
 
   p {
     font-weight: 600;

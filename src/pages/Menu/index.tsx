@@ -2,8 +2,17 @@ import { SearchBarComponent } from '../../components/SearchBar'
 import { Content, MenuBox, MenuContainer, ShopCartBox } from './styles'
 import { Carrousel } from './components/Carrousel'
 import { MenuSection } from './components/MenuSection'
+import { useRef } from 'react'
 
 export const Menu = () => {
+  const sectionRefs = useRef<any>({})
+
+  const scrollToSection = (sectionId: number) => {
+    const sectionElement = sectionRefs.current[sectionId];
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <MenuContainer>
@@ -11,8 +20,8 @@ export const Menu = () => {
 
       <Content>
         <MenuBox>
-          <Carrousel />
-          <MenuSection />
+          <Carrousel scrollToSection={scrollToSection} />
+          <MenuSection  setSectionRefs={refs => (sectionRefs.current = refs.current)}/>
         </MenuBox>
 
         <ShopCartBox>

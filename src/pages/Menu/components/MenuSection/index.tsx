@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { memo, useContext, useEffect, useRef, useState } from 'react'
 import {
   CaretDownIcon,
   CaretUpIcon,
@@ -14,12 +14,22 @@ import { MenuContext } from '../../../../contexts/MenuContext'
 import useFetch from '../../../../hooks/useFetch'
 import { priceFormatter } from '../../../../utils/formatter'
 
+interface MenuSectionProps {
+  setSectionRefs: (refs: any) => void;
+}
+
 type SectionState = Record<number, boolean>;
 
-export const MenuSection = () => {
+const MenuSectionComponent = ({ setSectionRefs }: MenuSectionProps) => {
   const { menuData } = useContext(MenuContext)
   const { data } = useFetch()
   const [openSections, setOpenSections] = useState<SectionState>({})
+  const sectionRefs = useRef<any>({})
+
+  setSectionRefs(sectionRefs);
+  useEffect(() => {
+    setSectionRefs(sectionRefs);
+  }, [sectionRefs, setSectionRefs]);
 
   const currentCurrency = data?.ccy || 'BRL'
 
@@ -39,7 +49,7 @@ export const MenuSection = () => {
         const isOpen = openSections[section.id]
 
         return (
-          < MenuSectionToggleeBox key={section.id} >
+          < MenuSectionToggleeBox key={section.id} ref={el => (sectionRefs.current[section.id] = el)} >
             <MenuTitleBox>
               <h1>{section.name}</h1>
               <div onClick={() => toggleMenu(section.id)}>
@@ -80,3 +90,5 @@ export const MenuSection = () => {
     </MenuSectionContainer >
   )
 }
+
+export const MenuSection = memo(MenuSectionComponent)
