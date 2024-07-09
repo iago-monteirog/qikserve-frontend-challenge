@@ -12,6 +12,8 @@ import {
 import { MenuContext } from '../../../../contexts/MenuContext'
 import useFetch from '../../../../hooks/useFetch'
 import { priceFormatter } from '../../../../utils/formatter'
+import * as Dialog from '@radix-ui/react-dialog'
+import { ModalItem } from '../ModalItem'
 
 interface MenuSectionProps {
   setSectionRefs: (refs: React.MutableRefObject<Record<number, HTMLDivElement | null>>) => void;
@@ -55,31 +57,28 @@ const MenuSectionComponent = ({ setSectionRefs }: MenuSectionProps) => {
                 {isOpen ? <CaretDownIcon size={24} /> : <CaretUpIcon size={24} />}
               </div>
             </MenuTitleBox>
-            <ItemsContainer className={isOpen ? 'closed' : 'open'}>
 
+            <ItemsContainer className={isOpen ? 'closed' : 'open'}>
               {items.map(item => {
-                const imageSrc = item.images && item.images.length > 0 ? item.images[0]?.image ?? "" : ""
-                const description = item.description && item.description.length > 58 ? `${item.description.slice(0, 58)}...` : item.description
-                const formattedPrice = priceFormatter(currentCurrency).format(item.price)
+                const imageSrc = item.images && item.images.length > 0 ? item.images[0]?.image ?? "" : "";
+                const description = item.description && item.description.length > 58 ? `${item.description.slice(0, 58)}...` : item.description;
+                const formattedPrice = priceFormatter(currentCurrency).format(item.price);
 
                 return (
-                  <MenuItem key={item.id}>
-                    <ItemDescription>
-                      <h3>{item.name}</h3>
-                      <p>{description}</p>
-                      <span>{formattedPrice}</span>
-                    </ItemDescription>
-                    {
-                      imageSrc === ""
-                        ? <></>
-                        :
-                        <img
-                          src={imageSrc}
-                          alt={item.name}
-                        />
-                    }
-                  </MenuItem>
-                )
+                  <Dialog.Root key={item.id}>
+                    <Dialog.Trigger asChild >
+                        <MenuItem>
+                          <ItemDescription>
+                            <h3>{item.name}</h3>
+                            <p>{description}</p>
+                            <span>{formattedPrice}</span>
+                          </ItemDescription>
+                          {imageSrc !== "" && <img src={imageSrc} alt={item.name} />}
+                        </MenuItem>
+                    </Dialog.Trigger>
+                    <ModalItem />
+                  </Dialog.Root>
+                );
               })}
             </ItemsContainer>
           </MenuSectionToggleeBox>

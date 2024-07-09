@@ -11,10 +11,7 @@ export const GetMenuData = async (): Promise<MenuDataSchemaType> => {
 
   try {
     SectionsSchema.parse(data.sections);
-
     MenuDataSchema.parse(data);
-
-    
   } catch (error) {
     if (error instanceof z.ZodError) {
       console.error('Validation error:', error.errors);

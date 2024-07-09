@@ -20,6 +20,10 @@ export const CarrouselCard = styled.a<CarrouselCardProps>`
   padding: 0 10px 10px;
   cursor: pointer;
 
+  &:hover {
+    border-bottom: 2px solid ${props => props.theme.primaryColour};
+  }
+
   p {
     font-weight: 600;
     font-size: 1rem;
