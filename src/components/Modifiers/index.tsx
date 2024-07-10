@@ -1,4 +1,5 @@
 import { ModifierSchemaType } from "../../@types/modifier.type"
+import { ModifierItemSchemaType } from "../../@types/modifierItem.type"
 import useFetch from "../../hooks/useFetch"
 import { priceFormatter } from "../../utils/formatter"
 import { ModifierContent, ModifierOptionContainer, ModifierInfo, RadioGroupItem, RadioGroupIndicator } from "./styles"
@@ -6,9 +7,10 @@ import * as RadioGroup from "@radix-ui/react-radio-group"
 
 interface ModifiersComponentProps {
     modifiers: ModifierSchemaType
+    onModifierChange: (modifier: ModifierItemSchemaType) => void;
 }
 
-export const Modifiers = ({ modifiers }: ModifiersComponentProps) => {
+export const Modifiers = ({ modifiers, onModifierChange }: ModifiersComponentProps) => {
     const { data } = useFetch()
 
     const currentCurrency = data?.ccy || 'USD'
@@ -16,7 +18,12 @@ export const Modifiers = ({ modifiers }: ModifiersComponentProps) => {
     return (
         <ModifierContent>
             {modifiers && modifiers.items && modifiers.items.length > 0 ? (
-                <RadioGroup.Root>
+                <RadioGroup.Root onValueChange={(value) => {
+                    const selectedModifier = modifiers.items!.find(item => item.id.toString() === value);
+                    if (selectedModifier) {
+                        onModifierChange(selectedModifier);
+                    }
+                }}>
                     <p>{modifiers.name}</p>
                     <span>{`Select ${modifiers.minChoices} option`}</span>
                     {
@@ -29,7 +36,7 @@ export const Modifiers = ({ modifiers }: ModifiersComponentProps) => {
                                         <span>{formattedPrice}</span>
                                     </ModifierInfo>
 
-                                    <RadioGroupItem value={`${item.price}`} id={`${item.id}`}>
+                                    <RadioGroupItem value={item.id.toString()} id={`${item.id}`}>
                                         <RadioGroupIndicator />
                                     </RadioGroupItem>
                                 </ModifierOptionContainer>

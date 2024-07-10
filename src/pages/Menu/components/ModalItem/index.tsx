@@ -6,7 +6,7 @@ import { ItemSchemaType } from '../../../../@types/item.type'
 import { ModifierSchemaType } from '../../../../@types/modifier.type'
 import { useCart } from '../../../../contexts/CartContext'
 import { ModifierItemSchemaType } from '../../../../@types/modifierItem.type'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useFetch from '../../../../hooks/useFetch'
 import { priceFormatter } from '../../../../utils/formatter'
 import { ItemCounter } from '../../../../components/ItemCounter'
@@ -18,13 +18,18 @@ interface ModalItemProps {
 export const ModalItem = ({ item }: ModalItemProps) => {
     const { dispatch } = useCart();
     const [quantity, setQuantity] = useState(1)
+    const [selectedModifier, setSelectedModifier] = useState<ModifierItemSchemaType | null>(null);
+    const [totalPrice, setTotalPrice] = useState(item.price);
     const { data } = useFetch()
     const currentCurrency = data?.ccy || 'USD'
 
-    const handleAddToCart = () => {
-        const selectedModifiers: ModifierItemSchemaType[] = [];
+    useEffect(() => {
+        const modifierPrice = selectedModifier ? selectedModifier.price : 0;
+        setTotalPrice((item.price + modifierPrice) * quantity);
+    }, [quantity, selectedModifier]);
 
-        const totalPrice = item.price + (selectedModifiers.reduce((acc, mod) => acc + mod.price, 0) || 0);
+    const handleAddToCart = () => {
+        const selectedModifiers = selectedModifier ? [selectedModifier] : [];
 
         dispatch({
             type: 'ADD_ITEM',
@@ -59,7 +64,7 @@ export const ModalItem = ({ item }: ModalItemProps) => {
     };
     const modifiers = item.modifiers && item.modifiers.length > 0 ? item.modifiers[0] : defaultModifier;
 
-    const formattedPrice = priceFormatter(currentCurrency).format(item.price * quantity);
+    const formattedPrice = priceFormatter(currentCurrency).format(totalPrice);
     const minChoices = item.modifiers && item.modifiers.length > 0 ? item.modifiers[0].minChoices : ''
 
     return (
@@ -74,7 +79,13 @@ export const ModalItem = ({ item }: ModalItemProps) => {
                 </Dialog.Close>
 
                 <ModalItemHeader>
-                    <img src={imageSrc} alt="" />
+                    {
+                        imageSrc ? (
+                            <img src={imageSrc} alt="" />
+                        ) : (
+                            <></>
+                        )
+                    }
                 </ModalItemHeader>
 
                 <ModifierHeader>
@@ -82,13 +93,16 @@ export const ModalItem = ({ item }: ModalItemProps) => {
                     <Dialog.Description>{item.description}</Dialog.Description>
                 </ModifierHeader>
 
-                <Modifiers modifiers={modifiers} />
+                <Modifiers
+                    modifiers={modifiers}
+                    onModifierChange={(modifier) => setSelectedModifier(modifier)}
+                />
 
                 <AddToOrderContainer>
                     <ItemCounter
-                        minChoices={minChoices}
                         decrementQuantity={decrementQuantity}
                         incrementQuantity={incrementQuantity}
+                        minChoices={minChoices}
                         quantity={quantity}
                     />
 
