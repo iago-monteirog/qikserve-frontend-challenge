@@ -50,6 +50,11 @@ export const ShopCartRowItem = styled.div`
   justify-content: space-between;
 `
 
+export const ModifierText = styled.p`
+  color: #5F5F5F;
+  line-height: 1.6;
+`
+
 export const ShopCartQuantity = styled.div`
   display: flex;
   align-items: center;
@@ -108,4 +113,8 @@ export const ShopCartTotal = styled(ShopCartTotalSubtotalModel)`
     font-weight: 300;
     font-size: 1.5rem;
   }
+`
+
+export const EmptyCart = styled.div`
+  padding: 24px;
 `

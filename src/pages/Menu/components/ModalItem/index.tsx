@@ -104,6 +104,7 @@ export const ModalItem = ({ item }: ModalItemProps) => {
                         incrementQuantity={incrementQuantity}
                         minChoices={minChoices}
                         quantity={quantity}
+                        size={18}
                     />
 
                     <AddButton onClick={handleAddToCart}>
