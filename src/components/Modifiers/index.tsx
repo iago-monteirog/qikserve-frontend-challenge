@@ -1,34 +1,47 @@
+import { ModifierSchemaType } from "../../@types/modifier.type"
+import useFetch from "../../hooks/useFetch"
+import { priceFormatter } from "../../utils/formatter"
 import { ModifierContent, ModifierOptionContainer, ModifierInfo, RadioGroupItem, RadioGroupIndicator } from "./styles"
 import * as RadioGroup from "@radix-ui/react-radio-group"
 
-export const Modifiers = () => {
+interface ModifiersComponentProps {
+    modifiers: ModifierSchemaType
+}
+
+export const Modifiers = ({ modifiers }: ModifiersComponentProps) => {
+    const { data } = useFetch()
+
+    const currentCurrency = data?.ccy || 'USD'
+
     return (
         <ModifierContent>
-            <RadioGroup.Root>
-                <p>Choose your size</p>
-                <span>Select 1 option</span>
+            {modifiers && modifiers.items && modifiers.items.length > 0 ? (
+                <RadioGroup.Root>
+                    <p>{modifiers.name}</p>
+                    <span>{`Select ${modifiers.minChoices} option`}</span>
+                    {
+                        modifiers.items.map(item => {
+                            const formattedPrice = priceFormatter(currentCurrency).format(item.price)
+                            return (
+                                <ModifierOptionContainer key={item.id}>
+                                    <ModifierInfo>
+                                        <p>{item.name}</p>
+                                        <span>{formattedPrice}</span>
+                                    </ModifierInfo>
 
-                <ModifierOptionContainer>
-                    <ModifierInfo>
-                        <p>1 meat</p>
-                        <span>R$ 33,00</span>
-                    </ModifierInfo>
+                                    <RadioGroupItem value={`${item.price}`} id={`${item.id}`}>
+                                        <RadioGroupIndicator />
+                                    </RadioGroupItem>
+                                </ModifierOptionContainer>
+                            )
+                        })
+                    }
 
-                    <RadioGroupItem value="1meat" id="r1">
-                        <RadioGroupIndicator />
-                    </RadioGroupItem>
-                </ModifierOptionContainer>
-                <ModifierOptionContainer>
-                    <ModifierInfo>
-                        <p>2 meat</p>
-                        <span>R$ 33,00</span>
-                    </ModifierInfo>
+                </RadioGroup.Root>
+            ) : (
+                <></>
+            )}
 
-                    <RadioGroupItem value="2meat" id="r2">
-                        <RadioGroupIndicator />
-                    </RadioGroupItem>
-                </ModifierOptionContainer>
-            </RadioGroup.Root>
         </ModifierContent>
     )
 }

@@ -76,7 +76,7 @@ const MenuSectionComponent = ({ setSectionRefs }: MenuSectionProps) => {
                           {imageSrc !== "" && <img src={imageSrc} alt={item.name} />}
                         </MenuItem>
                     </Dialog.Trigger>
-                    <ModalItem />
+                    <ModalItem item={item!}/>
                   </Dialog.Root>
                 );
               })}

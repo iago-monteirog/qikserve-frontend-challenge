@@ -2,8 +2,24 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { AddButton, AddToOrderContainer, CloseButton, Content, ItemCounter, ModalItemHeader, ModifierHeader, Overlay, QuantityButton, ShopCartQuantity } from './styles'
 import { Minus, Plus, X } from '@phosphor-icons/react'
 import { Modifiers } from '../../../../components/Modifiers'
+import { ItemSchemaType } from '../../../../@types/item.type'
+import { ModifierSchemaType } from '../../../../@types/modifier.type'
 
-export const ModalItem = () => {
+interface ModalItemProps {
+    item: ItemSchemaType
+}
+
+export const ModalItem = ({ item }: ModalItemProps) => {
+    const imageSrc = item.images && item.images.length > 0 ? item.images[0]?.image ?? "" : "";
+    const defaultModifier: ModifierSchemaType = {
+        id: 0,
+        name: "",
+        minChoices: 0,
+        maxChoices: 0,
+        items: []
+    };
+    const modifiers = item.modifiers && item.modifiers.length > 0 ? item.modifiers[0] : defaultModifier;
+
     return (
         <Dialog.Portal>
             <Overlay />
@@ -16,15 +32,15 @@ export const ModalItem = () => {
                 </Dialog.Close>
 
                 <ModalItemHeader>
-                    <img src="https://preodemo.gumlet.io/usr/venue/7602/menuItem/646fbe01b3373.png" alt="" />
+                    <img src={imageSrc} alt="" />
                 </ModalItemHeader>
 
                 <ModifierHeader>
-                    <Dialog.Title>Smash Brooks</Dialog.Title>
-                    <Dialog.Description>100g pressed hamburger, mozzarella cheese, pickles, red onion, grilled bacon and traditional Heinz mayonnaise.</Dialog.Description>
+                    <Dialog.Title>{item.name}</Dialog.Title>
+                    <Dialog.Description>{item.description}</Dialog.Description>
                 </ModifierHeader>
 
-                <Modifiers />
+                <Modifiers modifiers={modifiers} />
 
                 <AddToOrderContainer>
                     <ShopCartQuantity>
