@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { ItemCounterContainer, QuantityButton, Counter } from "./styles"
 import { Minus, Plus } from "@phosphor-icons/react"
 
@@ -9,7 +10,7 @@ interface ItemCounterProps {
     size: number;
 }
 
-export const ItemCounter = ({decrementQuantity, incrementQuantity, quantity, minChoices, size}: ItemCounterProps) => {
+export const ItemCounterComponent = ({decrementQuantity, incrementQuantity, quantity, minChoices, size}: ItemCounterProps) => {
     const isMinChoince = quantity === minChoices || quantity === 1;
 
     const handleIncrement = () => {
@@ -29,10 +30,12 @@ export const ItemCounter = ({decrementQuantity, incrementQuantity, quantity, min
             <QuantityButton onClick={handleDecrement} disabled={isMinChoince}>
                 <Minus size={size} color="#fff" weight="bold" />
             </QuantityButton>
-            <Counter>{minChoices ? minChoices : quantity}</Counter>
+            <Counter>{quantity}</Counter>
             <QuantityButton onClick={handleIncrement}>
                 <Plus size={size} color="#fff" weight="bold" />
             </QuantityButton>
         </ItemCounterContainer>
     )
 }
+
+export const ItemCounter = memo(ItemCounterComponent)

@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext, useReducer } from "react";
 import { ModifierItemsSchemaType } from "../@types/modifierItem.type";
 
-interface CartItem {
+export interface CartItem {
   id: number;
   name: string;
   basePrice: number;
@@ -38,13 +38,11 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         items: state.items.filter(item => item.id !== (action.payload as { id: number }).id),
       };
     case 'UPDATE_ITEM_QUANTITY':
-      const { id, quantity } = action.payload as { id: number; quantity: number };
+      const { id, quantity, totalPrice } = action.payload as { id: number; quantity: number, totalPrice: number };
       return {
         ...state,
         items: state.items.map(item =>
-          item.id === id
-            ? { ...item, quantity, totalPrice: item.basePrice * quantity }
-            : item
+          item.id === id ? { ...item, quantity, totalPrice } : item
         ),
       };
     default:

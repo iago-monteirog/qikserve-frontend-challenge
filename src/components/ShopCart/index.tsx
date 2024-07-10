@@ -1,5 +1,5 @@
 import { ShopCartContainer, ShopCartContent, ShopCartHeader, ShopCartItem, ShopCartRowItem, ShopCartSubTotal, ShopCartTotal, EmptyCart, ModifierText } from "./styles"
-import { useCart } from "../../contexts/CartContext"
+import { CartItem, useCart } from "../../contexts/CartContext"
 import useFetch from "../../hooks/useFetch";
 import { priceFormatter } from "../../utils/formatter";
 import { ItemCounter } from "../ItemCounter";
@@ -15,29 +15,34 @@ export const ShopCart = () => {
     const formattedSubTotal = priceFormatter(currentCurrency).format(subTotal)
     const formattedTotal = priceFormatter(currentCurrency).format(subTotal)
 
-    const incrementQuantity = (id: number) => {
+    const calculateTotalPrice = (item: CartItem, quantity: number) => {
+        const modifiersTotalPrice = item.modifiers?.reduce((acc, mod) => acc + mod.price, 0) || 0;
+        return (item.basePrice + modifiersTotalPrice) * quantity;
+      };
+
+      const incrementQuantity = (id: number) => {
         const item = items.find(item => item.id === id);
         if (item) {
-            const newQuantity = item.quantity + 1;
-            const newTotalPrice = item.basePrice * newQuantity;
-            dispatch({
-                type: 'UPDATE_ITEM_QUANTITY',
-                payload: { id, quantity: newQuantity, totalPrice: newTotalPrice }
-            });
+          const newQuantity = item.quantity + 1;
+          const newTotalPrice = calculateTotalPrice(item, newQuantity);
+          dispatch({
+            type: 'UPDATE_ITEM_QUANTITY',
+            payload: { id, quantity: newQuantity, totalPrice: newTotalPrice }
+          });
         }
-    };
-
-    const decrementQuantity = (id: number) => {
+      };
+    
+      const decrementQuantity = (id: number) => {
         const item = items.find(item => item.id === id);
         if (item && item.quantity > 1) {
-            const newQuantity = item.quantity - 1;
-            const newTotalPrice = item.basePrice * newQuantity;
-            dispatch({
-                type: 'UPDATE_ITEM_QUANTITY',
-                payload: { id, quantity: newQuantity, totalPrice: newTotalPrice }
-            });
+          const newQuantity = item.quantity - 1;
+          const newTotalPrice = calculateTotalPrice(item, newQuantity);
+          dispatch({
+            type: 'UPDATE_ITEM_QUANTITY',
+            payload: { id, quantity: newQuantity, totalPrice: newTotalPrice }
+          });
         }
-    };
+      };
 
     return (
         <ShopCartContainer>
