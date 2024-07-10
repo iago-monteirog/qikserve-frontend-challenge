@@ -66,33 +66,6 @@ export const AddToOrderContainer = styled.div`
   gap: 10px;
 `
 
-export const ShopCartQuantity = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 8px;
-`
-
-export const QuantityButton = styled.button`
-  background-color: ${props => props.theme.primaryColour};
-  border: none;
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-`
-
-export const ItemCounter = styled.span`
-  font-weight: 700;
-  font-size: 1rem;
-  text-align: center;
-  line-height: 1.5;
-  color: #121212;
-`
-
 export const AddButton = styled.button`
   background-color: ${props => props.theme.primaryColour};
   display: flex;
