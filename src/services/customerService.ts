@@ -1,15 +1,8 @@
-import {
-  CustomerDataPropsSchema,
-  CustomerDataProps,
-} from '../@types/customer.type'
-import api from '../lib/axios'
+import { CustomerDataProps, CustomerDataPropsSchema } from "../@types/customer.type";
+import { fetchAndParseData } from "../utils/apiUtils";
 
-const URL_PATH = '/venue/9'
+const URL_PATH = '/venue/9';
 
-export const GetCustomerData = async (): Promise<CustomerDataProps> => {
-  const response = await api.get(URL_PATH)
-
-  const customerData = CustomerDataPropsSchema.parse(response.data)
-
-  return customerData
+export const GetCustomerData = async(): Promise<CustomerDataProps> => {
+  return fetchAndParseData<CustomerDataProps>(URL_PATH, CustomerDataPropsSchema)
 }
