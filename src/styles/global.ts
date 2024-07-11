@@ -15,7 +15,11 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background: #EEEEEE;
         color: #121212;
-        -webkit-font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased; 
+
+        @media (max-width: 768px) {
+            background: ${props => props.theme.backgroundColour};
+        }
     }
 
     body, input, text-area, button {

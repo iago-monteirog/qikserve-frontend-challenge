@@ -6,17 +6,26 @@ export const ShopCartContainer = styled.div`
   height: fit-content;
   min-width: 320px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const ShopCartHeader = styled.header`
+  display: flex;
+  align-items: center;
   padding: 22px 24px;
   background: #F8F9FA;
 
   h1 {
     color: #464646;
     font-weight: 500;
-    size: 1.5rem;
+    font-size: 1.5rem;
     line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 `
 
@@ -24,6 +33,7 @@ export const ShopCartContent = styled.div`
   padding: 24px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `
 
 export const ShopCartItem = styled.div`
@@ -117,4 +127,33 @@ export const ShopCartTotal = styled(ShopCartTotalSubtotalModel)`
 
 export const EmptyCart = styled.div`
   padding: 24px;
+`
+
+export const ShopCartFooter = styled.div`
+  width: 100%;
+`
+
+export const CheckoutButton = styled.div`
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  background-color: ${props => props.theme.primaryColour};
+  color: white;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 345px;
+  max-height: 48px;
+  padding: 14px;
+  border: 0;
+  border-radius: 40px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${props => props.theme.primaryColourHover};
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
 `

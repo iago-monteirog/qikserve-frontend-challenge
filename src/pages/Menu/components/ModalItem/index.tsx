@@ -106,10 +106,11 @@ export const ModalItem = ({ item }: ModalItemProps) => {
                         quantity={quantity}
                         size={18}
                     />
-
-                    <AddButton onClick={handleAddToCart}>
-                        <p>Add to Order • {formattedPrice}</p>
-                    </AddButton>
+                    <Dialog.Close asChild>
+                        <AddButton onClick={handleAddToCart}>
+                            <p>Add to Order • {formattedPrice}</p>
+                        </AddButton>
+                    </Dialog.Close>
                 </AddToOrderContainer>
 
             </Content>

@@ -20,6 +20,16 @@ export const Content = styled(Dialog.Content)`
   max-height: 90vh; 
   overflow-y: auto; 
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    top: 0;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -35,6 +45,11 @@ export const CloseButton = styled.button`
     align-items: center;
     justify-content: center;
     padding: 4px;
+
+    @media (max-width: 768px) {
+      top: 0.5rem;
+      right: 0.5rem;
+  }
 `
 
 export const ModalItemHeader = styled.header`
@@ -43,6 +58,10 @@ export const ModalItemHeader = styled.header`
     height: 100%;
     object-fit: cover;
   }
+
+  @media (max-width: 768px) {
+      height: auto;
+    }
 `
 
 export const ModifierHeader = styled.div`
@@ -50,6 +69,10 @@ export const ModifierHeader = styled.div`
   flex-direction: column;
   gap: 8px;
   padding: 16px;
+
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
 `
 
 export const AddToOrderContainer = styled.div`
@@ -64,6 +87,10 @@ export const AddToOrderContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+
+   @media (max-width: 768px) {
+    padding: 8px;
+  }
 `
 
 export const AddButton = styled.button`

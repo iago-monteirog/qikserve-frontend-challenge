@@ -1,8 +1,9 @@
-import { ShopCartContainer, ShopCartContent, ShopCartHeader, ShopCartItem, ShopCartRowItem, ShopCartSubTotal, ShopCartTotal, EmptyCart, ModifierText } from "./styles"
-import { CartItem, useCart } from "../../contexts/CartContext"
+import { ShopCartContainer, ShopCartContent, ShopCartHeader, ShopCartItem, ShopCartRowItem, ShopCartSubTotal, ShopCartTotal, EmptyCart, ModifierText, CheckoutButton, ShopCartFooter } from "./styles"
+import { useCart } from "../../contexts/CartContext"
 import useFetch from "../../hooks/useFetch";
 import { priceFormatter } from "../../utils/formatter";
 import { ItemCounter } from "../ItemCounter";
+import { CartItem } from "../../interfaces/cart.interface";
 
 export const ShopCart = () => {
     const { state, dispatch } = useCart();
@@ -85,15 +86,19 @@ export const ShopCart = () => {
                         })}
 
                     </ShopCartContent>
+                    <ShopCartFooter>
+                        <ShopCartSubTotal>
+                            <p>Sub total</p>
+                            <span>{formattedSubTotal}</span>
+                        </ShopCartSubTotal>
+                        <ShopCartTotal>
+                            <p>Total</p>
+                            <span>{formattedTotal}</span>
+                        </ShopCartTotal>
+                    </ShopCartFooter>
 
-                    <ShopCartSubTotal>
-                        <p>Sub total</p>
-                        <span>{formattedSubTotal}</span>
-                    </ShopCartSubTotal>
-                    <ShopCartTotal>
-                        <p>Total</p>
-                        <span>{formattedTotal}</span>
-                    </ShopCartTotal>
+                    <CheckoutButton>Checkout now</CheckoutButton>
+
                 </>
             ) : (
                 <EmptyCart>

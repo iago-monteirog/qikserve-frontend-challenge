@@ -5,6 +5,10 @@ export const SearchBarContent = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
 `
 
 export const SearchInput = styled.input`
@@ -26,4 +30,8 @@ export const SearchIncon = styled(MagnifyingGlass)`
   left: 10px;
   transform: translateY(-50%);
   color: #8a94a4;
+
+  @media (max-width: 768px) {
+    left: 25px;
+  }
 `

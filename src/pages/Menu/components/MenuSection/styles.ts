@@ -52,6 +52,10 @@ export const MenuItem = styled.div`
   gap: 5rem;
   cursor: pointer;
 
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+
   img {
     max-width: 128px;
     width: 100%;
