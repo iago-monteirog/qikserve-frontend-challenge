@@ -18,31 +18,38 @@ export const ShopCart = () => {
     const calculateTotalPrice = (item: CartItem, quantity: number) => {
         const modifiersTotalPrice = item.modifiers?.reduce((acc, mod) => acc + mod.price, 0) || 0;
         return (item.basePrice + modifiersTotalPrice) * quantity;
-      };
+    };
 
-      const incrementQuantity = (id: number) => {
+    const incrementQuantity = (id: number) => {
         const item = items.find(item => item.id === id);
         if (item) {
-          const newQuantity = item.quantity + 1;
-          const newTotalPrice = calculateTotalPrice(item, newQuantity);
-          dispatch({
-            type: 'UPDATE_ITEM_QUANTITY',
-            payload: { id, quantity: newQuantity, totalPrice: newTotalPrice }
-          });
+            const newQuantity = item.quantity + 1;
+            const newTotalPrice = calculateTotalPrice(item, newQuantity);
+            dispatch({
+                type: 'UPDATE_ITEM_QUANTITY',
+                payload: { id, quantity: newQuantity, totalPrice: newTotalPrice }
+            });
         }
-      };
-    
-      const decrementQuantity = (id: number) => {
+    };
+
+    const decrementQuantity = (id: number) => {
         const item = items.find(item => item.id === id);
-        if (item && item.quantity > 1) {
-          const newQuantity = item.quantity - 1;
-          const newTotalPrice = calculateTotalPrice(item, newQuantity);
-          dispatch({
-            type: 'UPDATE_ITEM_QUANTITY',
-            payload: { id, quantity: newQuantity, totalPrice: newTotalPrice }
-          });
+        if (item) {
+            const newQuantity = item.quantity - 1;
+            if (newQuantity === 0) {
+                dispatch({
+                    type: 'REMOVE_ITEM',
+                    payload: { id }
+                });
+            } else {
+                const newTotalPrice = calculateTotalPrice(item, newQuantity);
+                dispatch({
+                    type: 'UPDATE_ITEM_QUANTITY',
+                    payload: { id, quantity: newQuantity, totalPrice: newTotalPrice }
+                });
+            }
         }
-      };
+    };
 
     return (
         <ShopCartContainer>
@@ -71,6 +78,7 @@ export const ShopCart = () => {
                                         incrementQuantity={() => incrementQuantity(item.id)}
                                         quantity={item.quantity}
                                         size={12}
+                                        canRemoveItem
                                     />
                                 </ShopCartItem>
                             )
