@@ -4,8 +4,7 @@ import api from "../lib/axios";
 export const fetchAndParseData = async <T>(url: string, schema: ZodSchema<T>): Promise<T> => {
     try {
         const response = await api.get(url)
-        console.log(response)
-
+        
         const data = response.data
 
         return schema.parse(data)
