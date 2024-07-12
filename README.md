@@ -1,30 +1,64 @@
-# React + TypeScript + Vite
+# QIKSERVE Front-end challenge Repository
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+This project was deloped to meet the specific needs of a restaurant.
 
-Currently, two official plugins are available:
+## Prerequisites
+- Node.js
+- NPM ou Yarn
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
 
-## Expanding the ESLint configuration
+- Programming Language: Typescript
+- Framework: React
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Run the project
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone this repository:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+  ```bash
+  git clone https://github.com/iago-monteirog/qikserve-frontend-challenge.git
+  ```
+   
+2. Navigate to the root of the project:
+
+3. Install dependencies
+```bash
+npm install
+```
+or
+```bash
+yarn
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+4. Start the application on dev mode
+```bash
+npm run dev
+# ou
+yarn dev
+```
+
+5. Access the website localy [http://localhost:3000](http://localhost:3000).
+
+## Using LINT
+To run lint use:
+```bash
+npm run lint
+```
+
+To fix lint problems
+```bash
+npm run fix
+```
+
+## Main Funcionalities
+
+- Display of products available for purchase.
+- Addition of products to the shopping cart.
+- Integration with API challenge.
+- Efficient communication with APIs using Fetch API and Axios.
+- Responsive styling with the Styled-components library.
+- Developed in TypeScript with a focus on Clean Code.
+
+## Link to production
+- https://qikserve-frontend-challenge-five.vercel.app/

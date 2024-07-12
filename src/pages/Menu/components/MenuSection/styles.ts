@@ -31,17 +31,17 @@ export const CaretDownIcon = styled(CaretDown)`
 `
 
 export const ItemsContainer = styled.div`
-    overflow: hidden; 
-    transition: max-height 0.3s ease; 
-    max-height: 0; 
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0;
 
-    &.open {
-        max-height: 1000px; 
-    }
+  &.open {
+    max-height: 1000px;
+  }
 
-    .closed {
-        max-height: 0; 
-    }
+  .closed {
+    max-height: 0;
+  }
 `
 
 export const MenuItem = styled.div`
@@ -64,7 +64,7 @@ export const MenuItem = styled.div`
   }
 
   &:hover {
-    background: #EEEEEE;
+    background: #eeeeee;
   }
 `
 
@@ -95,4 +95,23 @@ export const ItemDescription = styled.div`
     font-size: 1rem;
     color: #464646;
   }
+`
+
+export const ItemTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+`
+
+export const BadgeQuantity = styled.div`
+  padding: 1px 4px;
+  background: ${props => props.theme.primaryColour};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 4px;
 `

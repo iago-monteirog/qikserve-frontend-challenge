@@ -1,5 +1,5 @@
-import * as RadioGroup from "@radix-ui/react-radio-group"
-import styled from "styled-components"
+import * as RadioGroup from '@radix-ui/react-radio-group'
+import styled from 'styled-components'
 
 export const ModifierContent = styled.form`
   display: flex;
@@ -12,8 +12,8 @@ export const ModifierContent = styled.form`
     color: #464646;
   }
 
-  span:first-of-type{
-    color: #5F5F5F;
+  span:first-of-type {
+    color: #5f5f5f;
     line-height: 1.6;
   }
 `
@@ -34,7 +34,7 @@ export const ModifierInfo = styled.div`
     font-weight: 500;
     line-height: 1.6;
     color: #121212;
-  } 
+  }
 
   span {
     line-height: 1.6;
@@ -42,21 +42,18 @@ export const ModifierInfo = styled.div`
   }
 `
 
-
 export const RadioGroupItem = styled(RadioGroup.Item)`
   background-color: white;
   width: 20px;
   height: 20px;
-  border: 2px solid #5F5F5F;
+  border: 2px solid #5f5f5f;
   border-radius: 100%;
   cursor: pointer;
 
   &:hover {
-    background-color: ${props => props.theme.primaryColour};
+    background-color: ${(props) => props.theme.primaryColour};
   }
-
 `
-
 
 export const RadioGroupIndicator = styled(RadioGroup.Indicator)`
   display: flex;
@@ -67,11 +64,11 @@ export const RadioGroupIndicator = styled(RadioGroup.Indicator)`
   position: relative;
 
   &::after {
-  content: '';
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: ${props => props.theme.primaryColour};
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.primaryColour};
   }
 `
