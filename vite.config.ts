@@ -26,10 +26,10 @@ export default defineConfig(({ command, mode }) => {
         },
       },
       cors: {
-        origin: "https://qikserve-frontend-challenge-five.vercel.app",
+        origin: "*",
         methods: "GET",
         preflightContinue: false,
-        optionsSuccessStatus: 204
+        optionsSuccessStatus: 204 | 200
       }
     },
     define: {
