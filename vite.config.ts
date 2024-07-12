@@ -25,7 +25,12 @@ export default defineConfig(({ command, mode }) => {
           secure: false,
         },
       },
-      cors: false,
+      cors: {
+        origin: "https://qikserve-frontend-challenge-five.vercel.app",
+        methods: "GET",
+        preflightContinue: false,
+        optionsSuccessStatus: 204
+      }
     },
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
