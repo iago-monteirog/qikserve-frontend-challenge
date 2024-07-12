@@ -11,12 +11,23 @@ export default defineConfig(({ command, mode }) => {
       port: 3000,
       proxy: {
         '/api': {
-          target: env.VITE_API_URL, // Use a variável de ambiente carregada
+          target: env.VITE_API_URL, 
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
     },
+    preview: {
+			proxy: {
+				"/api": {
+					target: env.VITE_API_URL,
+					changeOrigin: true,
+					secure: false,
+					rewrite: (p) => p.replace(/^\/api/, ""),
+				},
+			},
+			cors: false,
+		},
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
       'process.env': env, // Esta linha permite que você use `process.env` no seu código
