@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig(({ command, mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
+  const env = loadEnv(mode, process.cwd(), '')
 
   return {
     plugins: [react()],
@@ -18,22 +18,22 @@ export default defineConfig(({ command, mode }) => {
     },
     preview: {
       proxy: {
-        "https://qikserve-frontend-challenge-five.vercel.app/": {
+        'https://qikserve-frontend-challenge-five.vercel.app/': {
           target: env.VITE_API_URL,
           changeOrigin: true,
           secure: false,
         },
       },
       cors: {
-        origin: "*",
-        methods: "GET",
+        origin: '*',
+        methods: 'GET',
         preflightContinue: false,
-        optionsSuccessStatus: 204 | 200
-      }
+        optionsSuccessStatus: 204 | 200,
+      },
     },
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
-      'process.env': env, 
+      'process.env': env,
     },
-  };
-});
+  }
+})

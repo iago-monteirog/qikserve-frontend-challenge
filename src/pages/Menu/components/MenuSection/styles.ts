@@ -31,17 +31,17 @@ export const CaretDownIcon = styled(CaretDown)`
 `
 
 export const ItemsContainer = styled.div`
-    overflow: hidden; 
-    transition: max-height 0.3s ease; 
-    max-height: 0; 
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0;
 
-    &.open {
-        max-height: 1000px; 
-    }
+  &.open {
+    max-height: 1000px;
+  }
 
-    .closed {
-        max-height: 0; 
-    }
+  .closed {
+    max-height: 0;
+  }
 `
 
 export const MenuItem = styled.div`
@@ -64,7 +64,7 @@ export const MenuItem = styled.div`
   }
 
   &:hover {
-    background: #EEEEEE;
+    background: #eeeeee;
   }
 `
 

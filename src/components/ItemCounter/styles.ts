@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ItemCounterContainer = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const ItemCounterContainer = styled.div`
 `
 
 export const QuantityButton = styled.button`
-  background-color: ${props => props.theme.primaryColour};
+  background-color: ${(props) => props.theme.primaryColour};
   border: none;
   border-radius: 50%;
   height: 32px;
@@ -19,13 +19,12 @@ export const QuantityButton = styled.button`
   cursor: pointer;
 
   &:disabled {
-    background-color: #DADADA;
+    background-color: #dadada;
     cursor: not-allowed;
 
     svg {
-        color: #5F5F5F;
+      color: #5f5f5f;
     }
-
   }
 `
 

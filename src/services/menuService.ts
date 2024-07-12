@@ -1,5 +1,5 @@
 import { MenuDataSchema, MenuDataSchemaType } from '../@types/menu.type'
-import { fetchAndParseData } from '../utils/apiUtils';
+import { fetchAndParseData } from '../utils/apiUtils'
 
 const URL_PATH = '/menu'
 

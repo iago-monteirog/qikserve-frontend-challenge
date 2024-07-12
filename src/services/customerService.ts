@@ -1,8 +1,11 @@
-import { CustomerDataProps, CustomerDataPropsSchema } from "../@types/customer.type";
-import { fetchAndParseData } from "../utils/apiUtils";
+import {
+  CustomerDataProps,
+  CustomerDataPropsSchema,
+} from '../@types/customer.type'
+import { fetchAndParseData } from '../utils/apiUtils'
 
-const URL_PATH = '/venue/9';
+const URL_PATH = '/venue/9'
 
-export const GetCustomerData = async(): Promise<CustomerDataProps> => {
+export const GetCustomerData = async (): Promise<CustomerDataProps> => {
   return fetchAndParseData<CustomerDataProps>(URL_PATH, CustomerDataPropsSchema)
 }

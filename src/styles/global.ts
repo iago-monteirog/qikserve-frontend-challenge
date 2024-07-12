@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased; 
 
         @media (max-width: 768px) {
-            background: ${props => props.theme.backgroundColour};
+            background: ${(props) => props.theme.backgroundColour};
         }
     }
 

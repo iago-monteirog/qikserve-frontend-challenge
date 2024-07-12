@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ShopCartContainer = styled.div`
   background: ${(props) => props.theme.backgroundColour};
@@ -15,7 +15,7 @@ export const ShopCartHeader = styled.header`
   display: flex;
   align-items: center;
   padding: 22px 24px;
-  background: #F8F9FA;
+  background: #f8f9fa;
 
   h1 {
     color: #464646;
@@ -61,7 +61,7 @@ export const ShopCartRowItem = styled.div`
 `
 
 export const ModifierText = styled.p`
-  color: #5F5F5F;
+  color: #5f5f5f;
   line-height: 1.6;
 `
 
@@ -73,7 +73,7 @@ export const ShopCartQuantity = styled.div`
 `
 
 export const QuantityButton = styled.button`
-  background-color: ${props => props.theme.primaryColour};
+  background-color: ${(props) => props.theme.primaryColour};
   border: none;
   border-radius: 50%;
   height: 20px;
@@ -97,11 +97,11 @@ export const ShopCartTotalSubtotalModel = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background: #F8F9FA;
+  background: #f8f9fa;
 `
 
 export const ShopCartSubTotal = styled(ShopCartTotalSubtotalModel)`
-  border-bottom: 1px solid #EEEEEE;
+  border-bottom: 1px solid #eeeeee;
 
   span {
     font-weight: 500;
@@ -117,7 +117,7 @@ export const ShopCartTotal = styled(ShopCartTotalSubtotalModel)`
   span {
     font-weight: 700;
     font-size: 1.5rem;
-  } 
+  }
 
   p {
     font-weight: 300;
@@ -137,7 +137,7 @@ export const CheckoutButton = styled.div`
   display: none;
   position: fixed;
   bottom: 16px;
-  background-color: ${props => props.theme.primaryColour};
+  background-color: ${(props) => props.theme.primaryColour};
   color: white;
   justify-content: center;
   align-items: center;
@@ -150,7 +150,7 @@ export const CheckoutButton = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: ${props => props.theme.primaryColourHover};
+    background-color: ${(props) => props.theme.primaryColourHover};
   }
 
   @media (max-width: 768px) {
