@@ -18,17 +18,12 @@ export default defineConfig(({ command, mode }) => {
     },
     preview: {
       proxy: {
-        'https://qikserve-frontend-challenge-five.vercel.app/': {
+        '/api': {
           target: env.VITE_API_URL,
           changeOrigin: true,
-          secure: false,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+          secure: false
         },
-      },
-      cors: {
-        origin: '*',
-        methods: 'GET',
-        preflightContinue: false,
-        optionsSuccessStatus: 204 | 200,
       },
     },
     define: {

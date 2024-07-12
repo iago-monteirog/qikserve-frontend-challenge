@@ -96,3 +96,22 @@ export const ItemDescription = styled.div`
     color: #464646;
   }
 `
+
+export const ItemTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+`
+
+export const BadgeQuantity = styled.div`
+  padding: 1px 4px;
+  background: ${props => props.theme.primaryColour};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 4px;
+`

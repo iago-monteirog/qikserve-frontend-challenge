@@ -1,8 +1,10 @@
 import { memo, useContext, useEffect, useRef, useState } from 'react'
 import {
+  BadgeQuantity,
   CaretDownIcon,
   CaretUpIcon,
   ItemDescription,
+  ItemTitle,
   ItemsContainer,
   MenuItem,
   MenuSectionContainer,
@@ -14,6 +16,7 @@ import useFetch from '../../../../hooks/useFetch'
 import { priceFormatter } from '../../../../utils/formatter'
 import * as Dialog from '@radix-ui/react-dialog'
 import { ModalItem } from '../ModalItem'
+import { useCart } from '../../../../contexts/CartContext'
 
 interface MenuSectionProps {
   setSectionRefs: (
@@ -26,6 +29,7 @@ type SectionState = Record<number, boolean>
 const MenuSectionComponent = ({ setSectionRefs }: MenuSectionProps) => {
   const { menuData } = useContext(MenuContext)
   const { data } = useFetch()
+  const { state } = useCart()
   const [openSections, setOpenSections] = useState<SectionState>({})
   const sectionRefs = useRef<Record<number, HTMLDivElement | null>>({})
 
@@ -37,6 +41,8 @@ const MenuSectionComponent = ({ setSectionRefs }: MenuSectionProps) => {
   const currentCurrency = data?.ccy || 'USD'
 
   const menuSections = menuData?.sections
+
+  const itemsCart = state.items
 
   const toggleMenu = (sectionId: number) => {
     setOpenSections((prevState) => ({
@@ -81,12 +87,24 @@ const MenuSectionComponent = ({ setSectionRefs }: MenuSectionProps) => {
                   item.price,
                 )
 
+                const itemFromCart = itemsCart.find((itemCart) => itemCart.id === item.id)
+
                 return (
                   <Dialog.Root key={item.id}>
                     <Dialog.Trigger asChild>
                       <MenuItem>
                         <ItemDescription>
-                          <h3>{item.name}</h3>
+                          <ItemTitle>
+                            {
+                              itemFromCart ? (
+                                <BadgeQuantity>{itemFromCart?.quantity}</BadgeQuantity>
+                              ) :
+                              (
+                                <></>
+                              )
+                            }
+                            <h3>{item.name}</h3>
+                          </ItemTitle>
                           <p>{description}</p>
                           <span>{formattedPrice}</span>
                         </ItemDescription>
