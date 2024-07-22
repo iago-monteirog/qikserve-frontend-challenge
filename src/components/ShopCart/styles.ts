@@ -16,6 +16,7 @@ export const ShopCartHeader = styled.header`
   align-items: center;
   padding: 22px 24px;
   background: #f8f9fa;
+  width: 100%;
 
   h1 {
     color: #464646;
