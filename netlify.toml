@@ -1,5 +1,11 @@
 [[redirects]]
-  from = "/api"
-  to = "https://cdn-dev.preoday.com/challenge"
+  from = "/api/venue/9"
+  to = "https://cdn-dev.preoday.com/challenge/venue/9"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/menu"
+  to = "https://cdn-dev.preoday.com/challenge/menu"
   status = 200
   force = true
