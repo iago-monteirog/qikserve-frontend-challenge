@@ -13,18 +13,8 @@ export default defineConfig(({ command, mode }) => {
           target: env.VITE_API_URL,
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
-        },
+        }
       },
-    },
-    preview: {
-      proxy: {
-        'https://cdn-dev.preoday.com/challenge': {
-          target: env.VITE_API_URL,
-          changeOrigin: true,
-          secure: false,
-        },
-      },
-      cors: false,
     },
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),
